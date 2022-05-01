@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myfarm/screens/activitiesScreen.dart';
+import 'package:myfarm/screens/farmDetailsScreen.dart';
 import 'package:myfarm/screens/homeScreen.dart';
 
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'مزرعتي',
-      home: activitiesScreen(farmName: 'المزرعة الشمالية')
+      home:HomesScreen( )
     );
   }
 }

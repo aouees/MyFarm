@@ -149,7 +149,7 @@ class _HomesScreenState extends State<HomesScreen> {
                                     focusColor: green,
                                     enabledBorder: UnderlineInputBorder(
                                         borderSide:
-                                            BorderSide(width: 2.0, color: brown)),
+                                        BorderSide(width: 2.0, color: brown)),
                                     focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                             width: 3.0, color: green))),
@@ -172,7 +172,7 @@ class _HomesScreenState extends State<HomesScreen> {
                                     focusColor: green,
                                     enabledBorder: UnderlineInputBorder(
                                         borderSide:
-                                            BorderSide(width: 2.0, color: brown)),
+                                        BorderSide(width: 2.0, color: brown)),
                                     focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                             width: 3.0, color: green))),
@@ -195,7 +195,7 @@ class _HomesScreenState extends State<HomesScreen> {
                                     focusColor: green,
                                     enabledBorder: UnderlineInputBorder(
                                         borderSide:
-                                            BorderSide(width: 2.0, color: brown)),
+                                        BorderSide(width: 2.0, color: brown)),
                                     focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                             width: 3.0, color: green))),

@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   card_swiper: ^2.0.3
   modal_bottom_sheet: ^2.0.1
+  font_awesome_flutter: ^10.1.0
 
 dev_dependencies:
   flutter_test:

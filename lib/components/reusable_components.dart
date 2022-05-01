@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myfarm/shared/shared.dart';
 
@@ -81,9 +82,24 @@ Widget farmItem(){
 
 
 
-Widget activityItem(){
+Widget activityItem(context){
   return GestureDetector(
-    onTap: (){print('tapeed');},
+    onTap: (){
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            content: Container(
+              margin: EdgeInsets.all(10),
+                child: activityItemDetiles()) ,
+            elevation: 50.0,
+            shape: RoundedRectangleBorder(
+              side:  BorderSide(color:brown, width: 5.0),
+              borderRadius: BorderRadius.all( Radius.circular(50)),
+            ),
+          )
+      );
+
+    },
     child: Container(
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
@@ -122,8 +138,89 @@ Widget activityItem(){
                   fontSize: 30.0
               ),),
           ),
+          SizedBox(width: 5,),
+          IconButton(icon: Icon(Icons.delete_forever_outlined ,size: 35,color: brown, ), onPressed: (){})
         ],
       ),
     ),
   );
 }
+
+
+Widget activityItemDetiles(){
+
+  return SingleChildScrollView(
+    child: Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        CircleAvatar(
+          radius: 50,
+          backgroundColor: brown,
+          child: CircleAvatar(
+            backgroundColor: Colors.white,
+            foregroundColor: green,
+            radius: 45,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(10.toString() + " "),
+                Text(1.toString() + " "),
+                Text(2020.toString()+ " "),
+              ],
+            ),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text('سقاية ' ,textDirection: TextDirection.rtl,style: TextStyle(fontSize: 25 ,fontWeight: FontWeight.bold),),
+            Text('اسم النشاط : ' ,textDirection: TextDirection.rtl,style: TextStyle(fontSize: 25,color: green ,fontWeight: FontWeight.bold),),
+          ],
+        ),
+        Divider(
+          thickness: 3,
+          height: 10,
+          color: brown.withOpacity(0.6),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text('50000 ' ,textDirection: TextDirection.rtl,style: TextStyle(fontSize: 20),),
+            Text('التكلفة : ' ,textDirection: TextDirection.rtl,style: TextStyle(fontSize: 25,color: green),),
+          ],
+        ),
+        Divider(
+          thickness: 3,
+          height: 10,
+          color: brown.withOpacity(0.6),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text('مدفوعات ' ,textDirection: TextDirection.rtl,style: TextStyle(fontSize: 20),),
+            Text('نوع النشاط : ' ,textDirection: TextDirection.rtl,style: TextStyle(fontSize: 25,color: green),),
+          ],
+        ),
+        Divider(
+          thickness: 3,
+          height: 10,
+          color: brown.withOpacity(0.6),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Expanded(child: Text('شيسشيسيشلقثفغتعي لابغ  يشسيشسيش  يش سي شس' ,textDirection: TextDirection.rtl,style: TextStyle(fontSize: 20),softWrap: true,overflow: TextOverflow.visible,)),
+            Text('ملاحظات : ' ,textDirection: TextDirection.rtl,style: TextStyle(fontSize: 25,color: green),),
+          ],
+        ),
+        Divider(
+          thickness: 3,
+          height: 10,
+          color: brown.withOpacity(0.6),
+        ),
+        ],
+    ),
+  );
+}
+
+
