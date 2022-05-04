@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:myfarm/shared/shared.dart';
+import 'package:myfarm/shared/values.dart';
+import 'package:myfarm/components/reusable_components.dart';
 
 class farmDetailsScreen extends StatefulWidget {
   String farmName;
@@ -19,7 +20,6 @@ class _farmDetailsScreenState extends State<farmDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     String farmName = widget.farmName;
-    print(widget.x.toString() + " " + widget.y.toString());
     int x = widget.x,
         y = widget.y;
     return Scaffold(
@@ -73,7 +73,7 @@ class _farmDetailsScreenState extends State<farmDetailsScreen> {
                               children: List.generate(x, (b) {
                                 var c = b + 1,
                                     d = index + 1;
-                                return tree("($c,$d)");
+                                return tree(c,d,context);
                               }))), /*(
                     children: List.generate(y, (a) {
                       return Row(
@@ -92,27 +92,5 @@ class _farmDetailsScreenState extends State<farmDetailsScreen> {
   }
 
 
-  Widget tree(String x) {
-    return Container(
-      margin: EdgeInsets.all(2.5),
-      child: CircleAvatar(
-        radius: 40,
-        backgroundColor: brown,
-        child: CircleAvatar(
-          backgroundColor: Colors.white,
-          foregroundColor: green,
-          radius: 35,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              FaIcon(FontAwesomeIcons.tree),
-              Text(x),
-            ],
-          ),
-        ),
-      ),
-    )
 
-    ;
-  }
 }

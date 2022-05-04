@@ -1,7 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:myfarm/shared/shared.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:myfarm/shared/values.dart';
 
 
 
@@ -81,11 +82,11 @@ Widget farmItem(){
 }
 
 
-
 Widget activityItem(context){
   return GestureDetector(
     onTap: (){
       showDialog(
+          barrierColor: brown.withOpacity(0.5),
           context: context,
           builder: (context) => AlertDialog(
             content: Container(
@@ -98,7 +99,6 @@ Widget activityItem(context){
             ),
           )
       );
-
     },
     child: Container(
       padding: EdgeInsets.all(10.0),
@@ -219,6 +219,161 @@ Widget activityItemDetiles(){
           color: brown.withOpacity(0.6),
         ),
         ],
+    ),
+  );
+}
+
+
+Widget tree(int z,int y,context) {
+  String x="($z,$y)";
+  return InkWell(
+    onTap: (){
+      showDialog(
+          context: context,
+          barrierColor: brown.withOpacity(0.5),
+          builder: (context) => AlertDialog(
+            content: Container(
+                margin: EdgeInsets.all(10),
+                child: treeDetials(z, y,context)) ,
+            elevation: 50.0,
+            shape: RoundedRectangleBorder(
+              side:  BorderSide(color:brown, width: 5.0),
+              borderRadius: BorderRadius.all( Radius.circular(50)),
+            ),
+          )
+      );
+    },
+    child: Container(
+      margin: EdgeInsets.all(2.5),
+      child: CircleAvatar(
+        radius: 40,
+        backgroundColor: brown,
+        child: CircleAvatar(
+          backgroundColor: Colors.white,
+          foregroundColor: green,
+          radius: 35,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              FaIcon(FontAwesomeIcons.tree),
+              Text(x),
+
+            ],
+          ),
+        ),
+      ),
+    ),
+  )
+
+  ;
+}
+
+
+Widget treeDetials(int z,int y,context){
+  TextEditingController type = new TextEditingController(),
+            note=new TextEditingController();
+  String x="($z,$y)";
+  return  SingleChildScrollView(
+    child: Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        CircleAvatar(
+          radius: 50,
+          backgroundColor: brown,
+          child: CircleAvatar(
+            backgroundColor: Colors.white,
+            foregroundColor: green,
+            radius: 47,
+            child:  Center(child: FaIcon(FontAwesomeIcons.tree ,size: 50,),),
+          ),
+        ),
+        SizedBox(height: 10,),
+        Text(x ,textDirection: TextDirection.rtl,style: TextStyle(fontSize: 25 ,fontWeight: FontWeight.bold , color: green),textAlign: TextAlign.center,),
+        SizedBox(height: 10,),
+        TextFormField(
+          controller: type,
+          cursorColor: green,
+          keyboardType: TextInputType.text,
+          textDirection: TextDirection.rtl,
+          maxLength: 30,
+          decoration: InputDecoration(
+              hintText: 'نوع الشجرة : ',
+              hintStyle: TextStyle(color: green),
+              hintTextDirection: TextDirection.rtl,
+              focusColor: green,
+              enabledBorder: OutlineInputBorder(
+                  borderSide:
+                  BorderSide(width: 2.0, color: brown),
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(width: 3.0, color: green),
+                  borderRadius: BorderRadius.all(Radius.circular(30)
+                  )
+              )
+
+          ),
+        ),
+        SizedBox(height: 10,),
+        TextFormField(
+          controller: note,
+          cursorColor: green,
+          keyboardType: TextInputType.text,
+          textDirection: TextDirection.rtl,
+          maxLines: 4,
+          minLines: 2,
+
+          decoration: InputDecoration(
+            hintText: 'ملاحظات :',
+              hintStyle: TextStyle(color: green),
+              hintTextDirection: TextDirection.rtl,
+              focusColor: green,
+              enabledBorder: OutlineInputBorder(
+                  borderSide:
+                  BorderSide(width: 2.0, color: brown),
+                borderRadius: BorderRadius.all(Radius.circular(30))
+              
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(width: 3.0, color: green),
+                  borderRadius: BorderRadius.all(Radius.circular(30)
+                  )
+              )
+          ),
+        ),
+        SizedBox(height: 10,),
+        Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: brown, width: 2.0),
+                borderRadius: BorderRadius.all(Radius.circular(75))),
+          child: TextButton(
+            child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Icon(
+                Icons.save_outlined,
+                size: 40,
+                color: green,
+              ),
+              Text(
+                'احفظ',
+                style: TextStyle(
+                    fontSize: 20.0, color: green, fontWeight: FontWeight.bold),
+              )
+            ],
+      ),
+            onPressed: (){
+
+              Navigator.of(context).pop();
+            },
+    ),
+        ),
+
+
+      ],
     ),
   );
 }

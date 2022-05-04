@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:myfarm/components/reusable_components.dart';
-import 'package:myfarm/shared/shared.dart';
+import 'package:myfarm/shared/values.dart';
 
 class HomesScreen extends StatefulWidget {
   @override
@@ -160,6 +160,7 @@ class _HomesScreenState extends State<HomesScreen> {
                               TextFormField(
                                 validator: (value) => value.isEmpty ?'لا يمكن ترك حقل عدد الاشجار طولا فارغ ' : value.contains('-') ||
                                     value.contains('.') ?  'لا يمكن ادخال رقم سالب او ذو فواصل' : null ,
+                                maxLength: 2,
                                 controller: numH,
                                 cursorColor: green,
                                 keyboardType: TextInputType.numberWithOptions(
@@ -184,6 +185,7 @@ class _HomesScreenState extends State<HomesScreen> {
                                 validator:(value) => value.isEmpty ?'لا يمكن ترك حقل عدد الاشجار عرضا فارغ ' : value.contains('-') ||
                                     value.contains('.') ?  'لا يمكن ادخال رقم سالب او ذو فواصل' : null ,
                                 controller: numW,
+                                maxLength: 2,
                                 cursorColor: green,
                                 keyboardType: TextInputType.numberWithOptions(
                                     signed: false, decimal: false),

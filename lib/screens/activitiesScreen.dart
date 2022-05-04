@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myfarm/components/reusable_components.dart';
-import 'package:myfarm/shared/shared.dart';
+import 'package:myfarm/shared/values.dart';
 
 class activitiesScreen extends StatefulWidget {
   final String farmName;
@@ -9,13 +9,10 @@ class activitiesScreen extends StatefulWidget {
 
   @override
   State<activitiesScreen> createState() =>
-      _activitiesScreenState(farmName: farmName);
+      _activitiesScreenState();
 }
 
 class _activitiesScreenState extends State<activitiesScreen> {
-  final String farmName;
-
-  _activitiesScreenState({this.farmName});
 
   var scaffoldActivitiesKey = GlobalKey<ScaffoldState>();
   var formKey = GlobalKey<FormState>();
@@ -37,7 +34,7 @@ class _activitiesScreenState extends State<activitiesScreen> {
        // automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         title: Text(
-          '$farmName',
+          widget.farmName,
           style: TextStyle(fontSize: 25.0),
           softWrap: true,
             overflow: TextOverflow.ellipsis,
