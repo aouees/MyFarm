@@ -5,7 +5,7 @@ import 'package:myfarm/shared/values.dart';
 class activitiesScreen extends StatefulWidget {
   final String farmName;
 
-  activitiesScreen({this.farmName});
+  activitiesScreen(this.farmName);
 
   @override
   State<activitiesScreen> createState() =>
@@ -20,6 +20,7 @@ class _activitiesScreenState extends State<activitiesScreen> {
   var fabIcon = Icons.add;
   var fabText = 'جديد';
   var type = false;
+  var ss=[ 'سقاية','قطاف', 'تقليم','بخ مبيدات حشرية'];
   TextEditingController name = new TextEditingController(),
       date = new TextEditingController(),
       note = new TextEditingController(),
@@ -58,7 +59,7 @@ class _activitiesScreenState extends State<activitiesScreen> {
       body: Container(
         padding: EdgeInsets.all(10),
         child: ListView.separated(
-            itemBuilder: (context, index) => activityItem(context),
+            itemBuilder: (context, index) => activityItem(context ,ss[index] ),
             separatorBuilder: (context, index) => Divider(
                   thickness: 5,
                   height: 30,
@@ -171,16 +172,34 @@ class _activitiesScreenState extends State<activitiesScreen> {
                                 textDirection: TextDirection.rtl,
                                 onTap: () {
                                   showDatePicker(
+                                      builder: (context, child) {
+                                        return Theme(
+
+                                          data: Theme.of(context).copyWith(
+                                            colorScheme: ColorScheme.light(
+                                              primary: green, // body text color
+                                            ),
+                                            textButtonTheme: TextButtonThemeData(
+                                              style: TextButton.styleFrom(
+                                                primary: green, // button text color
+                                              ),
+                                            ),
+                                          ),
+                                          child: child,
+                                        );
+                                      },
+
                                           context: context,
                                           initialDate: DateTime.now(),
                                           firstDate: DateTime(2000, 1, 1),
                                           lastDate: DateTime.now())
                                       .then((value) {
+                                        if(value != null){
                                     date.text = value.year.toString() +
                                         "-" +
                                         value.month.toString() +
                                         '-' +
-                                        value.day.toString();
+                                        value.day.toString();}
                                   });
                                 },
                                 readOnly: true,

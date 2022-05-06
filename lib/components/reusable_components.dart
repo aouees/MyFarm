@@ -1,5 +1,4 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myfarm/shared/values.dart';
@@ -82,7 +81,7 @@ Widget farmItem(){
 }
 
 
-Widget activityItem(context){
+Widget activityItem(context, name){
   return GestureDetector(
     onTap: (){
       showDialog(
@@ -120,15 +119,15 @@ Widget activityItem(context){
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(10.toString() + " "),
-                  Text(1.toString() + " "),
-                  Text(2020.toString()+ " "),
+                  Text(5.toString() + " "),
+                  Text(5.toString() + " "),
+                  Text(2022.toString()+ " "),
                 ],
               ),
             ),
           ),
           Expanded(
-            child: Text("سقاية" ,
+            child: Text("$name" ,
               maxLines: 1,
               textAlign: TextAlign.right,
               overflow: TextOverflow.ellipsis,
@@ -163,9 +162,9 @@ Widget activityItemDetiles(){
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(10.toString() + " "),
-                Text(1.toString() + " "),
-                Text(2020.toString()+ " "),
+                Text(5.toString() + " "),
+                Text(5.toString() + " "),
+                Text(2022.toString()+ " "),
               ],
             ),
           ),
@@ -209,7 +208,7 @@ Widget activityItemDetiles(){
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Expanded(child: Text('شيسشيسيشلقثفغتعي لابغ  يشسيشسيش  يش سي شس' ,textDirection: TextDirection.rtl,style: TextStyle(fontSize: 20),softWrap: true,overflow: TextOverflow.visible,)),
+            Expanded(child: Text(' تم تسليمها للعامل محمد واحمد ' ,textDirection: TextDirection.rtl,style: TextStyle(fontSize: 20),softWrap: true,overflow: TextOverflow.visible,)),
             Text('ملاحظات : ' ,textDirection: TextDirection.rtl,style: TextStyle(fontSize: 25,color: green),),
           ],
         ),

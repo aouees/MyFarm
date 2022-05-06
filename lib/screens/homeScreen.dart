@@ -1,8 +1,8 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:myfarm/components/reusable_components.dart';
+import 'package:myfarm/shared/database.dart';
 import 'package:myfarm/shared/values.dart';
 
 class HomesScreen extends StatefulWidget {
@@ -19,7 +19,19 @@ class _HomesScreenState extends State<HomesScreen> {
   TextEditingController name = new TextEditingController(),
       numH = new TextEditingController(),
       numW = new TextEditingController();
+  MyDatabase mydatabase;
+  @override
+  void initState()  {
+    super.initState();
+     mydatabase =new MyDatabase();
+     mydatabase.openMyDatabase();
+  }
 
+  @override
+  void dispose()  {
+     mydatabase.close();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
