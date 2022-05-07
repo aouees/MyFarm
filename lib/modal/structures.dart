@@ -1,4 +1,8 @@
-class data{
-  int year,ix,ex;
-  data(this.year,this.ix,this.ex);
+class DataAct {
+  // ix المقبوضات
+  // ex المدفوعات
+  int year;
+  double ix, ex;
+
+  DataAct(this.year, this.ix, this.ex);
 }

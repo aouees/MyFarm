@@ -40,10 +40,10 @@ class MyDatabase {
     int id = await myDatabase.insert(tables.tableName, tables.toMap());
     print('the $id \'s ${tables.tableName} with the values ${tables.toMap()}');
     if (tables is Farm) {
-      for (int i = 1; i <= tables.numW; i++) {
-        for (int j = 1; j <= tables.numH; j++) {
-          Tree t = new Tree(
-              type: '', indexH: j, indexW: i, note: '', farmId: tables.id);
+      for (int i = 0; i < tables.numW; i++) {
+        for (int j = 0; j < tables.numH; j++) {
+          Tree t =
+              new Tree(type: '', indexH: j, indexW: i, note: '', farmId: id);
           await insertToMyDatabase(t);
         }
       }
@@ -61,6 +61,7 @@ class MyDatabase {
   Future<List<Map>> getActivitiesData({@required int farmId}) async {
     List<Map> maps = await myDatabase
         .query('Activity', where: 'farmId = ?', whereArgs: [farmId]);
+    print('getted data');
     if (maps.length > 0) {
       return maps;
     }
@@ -106,9 +107,8 @@ class MyDatabase {
   }
 
   Future<void> close() async {
-
-  myDatabase.close().then((value) => (print('MyDatabase Closed')));
-
+    myDatabase.close().then((value) => (print('MyDatabase Closed')));
   }
 
+  Future<void> doSomething() async {}
 }

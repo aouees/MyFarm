@@ -2,24 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:myfarm/modal/table.dart';
 
 class Activity  extends Tables {
-  String type, note,name,actDate;
-  int  farmId ,id;
+  String note, name, actDate;
+  int farmId, id, type;
   double cost;
 
-  Activity({
-    @required this.type,
-    @required this.name,
-    @required this.actDate,
-    @required this.note,
-    @required this.cost,
-    @required this.farmId,
-    this.id
-  }){
-    this.tableName="Activity";
+  //type is 1 => مقبوضات | true
+  //type is 0 => مدفوعات | false
+
+  Activity(
+      {@required this.type,
+      @required this.name,
+      @required this.actDate,
+      @required this.note,
+      @required this.cost,
+      @required this.farmId,
+      this.id}) {
+    this.tableName = "Activity";
   }
 
   Map<String, Object> toMap() {
-    var map= {
+    var map = {
       'name': name,
       'actDate': actDate,
       'cost': cost,

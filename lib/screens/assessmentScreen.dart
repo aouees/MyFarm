@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -15,18 +14,15 @@ class assessmentScreen extends StatefulWidget {
 }
 
 class _assessmentScreenState extends State<assessmentScreen> {
-  List<data> datalist = List.generate(
-      22,
-      (index) => data(2000 + index, Random().nextInt(5) * 1000000 + 1000000,
-          Random().nextInt(5) * 1000000 + 1000000));
-  List<BarChartGroupData> BarGroups = [];
+  List<BarChartGroupData> barGroups = [];
 
   @override
   void initState() {
     super.initState();
-    for (data d in datalist) {
-      BarGroups.add(makeGroupData(d));
-    }
+    if (dataList.isNotEmpty)
+      for (DataAct d in dataList) {
+        barGroups.add(makeGroupData(d));
+      }
   }
 
   @override
@@ -58,42 +54,44 @@ class _assessmentScreenState extends State<assessmentScreen> {
         ),
         toolbarHeight: MediaQuery.of(context).size.height / 7.0,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Container(
-                width: BarGroups.length * 100.0,
-                padding: EdgeInsets.only(top: 60, left: 10, bottom: 10),
-                child: BarChart(
-                  BarChartData(
-                    borderData: FlBorderData(
-                      show: false,
-                    ),
-                    barGroups: BarGroups,
-                    gridData: FlGridData(show: false),
-                    titlesData: FlTitlesData(
-                      show: true,
-                      rightTitles: AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      topTitles: AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      bottomTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          getTitlesWidget: (value, meta) => Text(
-                              value.toInt().toString(),
-                              style: TextStyle(fontWeight: FontWeight.bold)),
-                        ),
-                      ),
-                      leftTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          reservedSize: 50,
-                          showTitles: true,
-                        ),
+      body: dataList.isNotEmpty
+          ? Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Container(
+                      width: barGroups.length * 100.0,
+                      padding: EdgeInsets.only(top: 60, left: 10, bottom: 10),
+                      child: BarChart(
+                        BarChartData(
+                          borderData: FlBorderData(
+                            show: false,
+                          ),
+                          barGroups: barGroups,
+                          gridData: FlGridData(show: false),
+                          titlesData: FlTitlesData(
+                            show: true,
+                            rightTitles: AxisTitles(
+                              sideTitles: SideTitles(showTitles: false),
+                            ),
+                            topTitles: AxisTitles(
+                              sideTitles: SideTitles(showTitles: false),
+                            ),
+                            bottomTitles: AxisTitles(
+                              sideTitles: SideTitles(
+                                showTitles: true,
+                                getTitlesWidget: (value, meta) => Text(
+                                    value.toInt().toString(),
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                              ),
+                            ),
+                            leftTitles: AxisTitles(
+                              sideTitles: SideTitles(
+                                reservedSize: 50,
+                                showTitles: true,
+                              ),
                       ),
                     ),
                   ),
@@ -108,31 +106,47 @@ class _assessmentScreenState extends State<assessmentScreen> {
                 '   المدفوعات  ',
                 style: TextStyle(fontSize: 20),
               ),
-              CircleAvatar(
-                backgroundColor: green,
-                radius: 10,
+                    CircleAvatar(
+                      backgroundColor: green,
+                      radius: 10,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      '   المقبوضات  ',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    CircleAvatar(
+                      backgroundColor: brown,
+                      radius: 10,
+                    ),
+                  ],
+                )
+              ],
+            )
+          : Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'اضف انشطة على هذه المزرعة لعرض الاحصائيات',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: green,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
               ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                '   المقبوضات  ',
-                style: TextStyle(fontSize: 20),
-              ),
-              CircleAvatar(
-                backgroundColor: brown,
-                radius: 10,
-              ),
-            ],
-          )
-        ],
-      ),
+            ),
     );
   }
 
-  BarChartGroupData makeGroupData(data d) {
+  BarChartGroupData makeGroupData(DataAct d) {
     return BarChartGroupData(barsSpace: 7, x: d.year, barRods: [
       BarChartRodData(
         borderRadius: BorderRadius.only(
