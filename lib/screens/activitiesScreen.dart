@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myfarm/modal/activity.dart';
 import 'package:myfarm/modal/farm.dart';
+import 'package:myfarm/reused/reuesed.dart';
 import 'package:myfarm/shared/values.dart';
 
 class activitiesScreen extends StatefulWidget {
@@ -33,32 +34,7 @@ class _activitiesScreenState extends State<activitiesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldActivitiesKey,
-      appBar: AppBar(
-        elevation: 0.0,
-        // automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
-        title: Text(
-          widget.farm.name,
-          style: TextStyle(fontSize: 25.0),
-          softWrap: true,
-          overflow: TextOverflow.ellipsis,
-        ),
-        centerTitle: true,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            boxShadow: [
-              new BoxShadow(blurRadius: 30.0, color: brown, spreadRadius: 10.0)
-            ],
-            color: green,
-            borderRadius: new BorderRadius.only(
-                bottomRight: new Radius.elliptical(
-                    MediaQuery.of(context).size.width, 100.0),
-                bottomLeft: new Radius.elliptical(
-                    MediaQuery.of(context).size.width, 100.0)),
-          ),
-        ),
-        toolbarHeight: MediaQuery.of(context).size.height / 7.0,
-      ),
+      appBar: myAppBar(context, widget.farm.name),
       body: activityList.length == 0
           ? Center(
               child: Column(

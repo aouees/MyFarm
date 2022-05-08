@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:myfarm/reused/reuesed.dart';
 import 'package:myfarm/shared/values.dart';
 
 import '../modal/farm.dart';
@@ -22,42 +23,7 @@ class _farmDetailsScreenState extends State<farmDetailsScreen> {
     String farmName = widget.farm.name;
     int x = widget.farm.numW, y = widget.farm.numH;
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0.0,
-          // automaticallyImplyLeading: false,
-          backgroundColor: Colors.transparent,
-          title: Text(
-            '$farmName',
-            style: TextStyle(fontSize: 25.0),
-            softWrap: true,
-            overflow: TextOverflow.ellipsis,
-          ),
-          centerTitle: true,
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              boxShadow: [
-                new BoxShadow(
-                    blurRadius: 30.0, color: brown, spreadRadius: 10.0)
-              ],
-              color: green,
-              borderRadius: new BorderRadius.only(
-                  bottomRight: new Radius.elliptical(
-                      MediaQuery
-                          .of(context)
-                          .size
-                          .width, 100.0),
-                  bottomLeft: new Radius.elliptical(
-                      MediaQuery
-                          .of(context)
-                          .size
-                          .width, 100.0)),
-            ),
-          ),
-          toolbarHeight: MediaQuery
-              .of(context)
-              .size
-              .height / 7.0,
-        ),
+        appBar: myAppBar(context, farmName),
         body: Row(
           children: [
             Expanded(

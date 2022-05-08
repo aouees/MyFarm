@@ -2,6 +2,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:myfarm/modal/structures.dart';
+import 'package:myfarm/reused/reuesed.dart';
 import '../shared/values.dart';
 
 class assessmentScreen extends StatefulWidget {
@@ -28,32 +29,7 @@ class _assessmentScreenState extends State<assessmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        // automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
-        title: Text(
-          widget.farmName,
-          style: TextStyle(fontSize: 25.0),
-          softWrap: true,
-          overflow: TextOverflow.ellipsis,
-        ),
-        centerTitle: true,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            boxShadow: [
-              new BoxShadow(blurRadius: 30.0, color: brown, spreadRadius: 10.0)
-            ],
-            color: green,
-            borderRadius: new BorderRadius.only(
-                bottomRight: new Radius.elliptical(
-                    MediaQuery.of(context).size.width, 100.0),
-                bottomLeft: new Radius.elliptical(
-                    MediaQuery.of(context).size.width, 100.0)),
-          ),
-        ),
-        toolbarHeight: MediaQuery.of(context).size.height / 7.0,
-      ),
+      appBar: myAppBar(context, widget.farmName),
       body: dataList.isNotEmpty
           ? Column(
               children: [

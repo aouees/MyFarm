@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myfarm/modal/farm.dart';
 import 'package:myfarm/modal/structures.dart';
 import 'package:myfarm/modal/tree.dart';
+import 'package:myfarm/reused/reuesed.dart';
 import 'package:myfarm/screens/activitiesScreen.dart';
 import 'package:myfarm/screens/assessmentScreen.dart';
 import 'package:myfarm/screens/farmDetailsScreen.dart';
@@ -48,30 +49,7 @@ class _HomesScreenState extends State<HomesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: AppBar(
-        elevation: 0.0,
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
-        title: Text(
-          'مزرعتي',
-          style: TextStyle(fontSize: 40.0),
-        ),
-        centerTitle: true,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            boxShadow: [
-              new BoxShadow(blurRadius: 30.0, color: brown, spreadRadius: 10.0)
-            ],
-            color: green,
-            borderRadius: new BorderRadius.only(
-                bottomRight: new Radius.elliptical(
-                    MediaQuery.of(context).size.width, 100.0),
-                bottomLeft: new Radius.elliptical(
-                    MediaQuery.of(context).size.width, 100.0)),
-          ),
-        ),
-        toolbarHeight: MediaQuery.of(context).size.height / 7.0,
-      ),
+      appBar: myAppBar(context, 'مزرعتي'),
       body: farmsList.length == 0
           ? Center(
               child: Column(
@@ -126,10 +104,10 @@ class _HomesScreenState extends State<HomesScreen> {
               )
             ],
           ),
-          onPressed: () async {
+          onPressed: () {
             if (shown) {
               if (formKey.currentState.validate()) {
-                await myDatabase
+                myDatabase
                     .insertToMyDatabase(Farm(
                         name: name.text,
                         numH: int.parse(numH.text),
@@ -142,13 +120,12 @@ class _HomesScreenState extends State<HomesScreen> {
                       farmsList.add(Farm.fromMap(element));
                     });
                   }
+                }).then((value) {
+                  setState(() {});
                 });
-                setState(() {
-                  fabIcon = Icons.add;
-                  fabText = 'جديد';
-                  shown = false;
-                });
-
+                fabIcon = Icons.add;
+                fabText = 'جديد';
+                shown = false;
                 Navigator.pop(context);
               }
             } else {
@@ -237,9 +214,9 @@ class _HomesScreenState extends State<HomesScreen> {
                                         borderSide: BorderSide(
                                             width: 3.0, color: green))),
                               ),
-                              SizedBox(
+                              /* SizedBox(
                                 height: 10,
-                              ),
+                              ),*/
                               TextFormField(
                                 validator: (value) => value.isEmpty
                                     ? 'لا يمكن ترك حقل عدد الاشجار عرضا فارغ '
