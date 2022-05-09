@@ -28,7 +28,7 @@ class _HomesScreenState extends State<HomesScreen> {
   TextEditingController name = new TextEditingController(),
       numH = new TextEditingController(),
       numW = new TextEditingController(),
-      new_name = new TextEditingController();
+      newName = new TextEditingController();
 
   @override
   void initState() {
@@ -42,6 +42,8 @@ class _HomesScreenState extends State<HomesScreen> {
           farmsList.add(Farm.fromMap(element));
         });
       }
+    }).then((value) {
+      setState(() {});
     });
   }
 
@@ -266,7 +268,7 @@ class _HomesScreenState extends State<HomesScreen> {
   }
 
   Widget farmItem(Farm farm, context) {
-    int t = farm.numW * farm.numH;
+    int to = farm.numW * farm.numH;
     return InkWell(
       onTap: () async {
         treeList = [];
@@ -298,7 +300,7 @@ class _HomesScreenState extends State<HomesScreen> {
                   fontWeight: FontWeight.bold, color: green, fontSize: 30.0),
             ),
             Text(
-              "${farm.numW} × ${farm.numH} = $t",
+              "${farm.numW} × ${farm.numH} = $to",
               maxLines: 1,
               textAlign: TextAlign.center,
               overflow: TextOverflow.ellipsis,
@@ -347,7 +349,7 @@ class _HomesScreenState extends State<HomesScreen> {
                                           validator: (value) => value.isEmpty
                                               ? 'لا يمكن ترك حقل الاسم فارغ '
                                               : null,
-                                          controller: new_name,
+                                          controller: newName,
                                           cursorColor: green,
                                           keyboardType: TextInputType.text,
                                           textDirection: TextDirection.rtl,
@@ -403,11 +405,11 @@ class _HomesScreenState extends State<HomesScreen> {
                                             onPressed: () async {
                                               if (newFormKey.currentState
                                                   .validate()) {
-                                                farm.name = new_name.text;
-                                                print(new_name.text);
+                                                farm.name = newName.text;
+                                                print(newName.text);
                                                 myDatabase.updateMyDatabase(
                                                     new Farm(
-                                                        name: new_name.text,
+                                                        name: newName.text,
                                                         numH: farm.numH,
                                                         numW: farm.numW),
                                                     farm.id);

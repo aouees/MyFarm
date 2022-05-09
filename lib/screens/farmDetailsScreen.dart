@@ -30,11 +30,11 @@ class _farmDetailsScreenState extends State<farmDetailsScreen> {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: SizedBox(
-                  width: (x) * 85.0,
+                  width: (y) * 85.0,
                   child: ListView.builder(
-                      itemCount: y,
+                      itemCount: x,
                       itemBuilder: (context, col) => Row(
-                              children: List.generate(x, (row) {
+                              children: List.generate(y, (row) {
                             return tree(treeList[y * row + col], context);
                           }))),
                 ),

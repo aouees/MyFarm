@@ -5,7 +5,7 @@ import '../shared/values.dart';
 Widget myAppBar(context, title) {
   return AppBar(
     elevation: 0.0,
-    automaticallyImplyLeading: false,
+    automaticallyImplyLeading: true,
     backgroundColor: Colors.transparent,
     title: Text(
       title,
