@@ -115,6 +115,7 @@ class _activitiesScreenState extends State<activitiesScreen> {
                 }).then((value) {
                   setState(() {});
                 });
+                formKey.currentState.reset();
                 Navigator.pop(context);
               }
             } else {

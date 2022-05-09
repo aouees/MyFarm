@@ -128,6 +128,7 @@ class _HomesScreenState extends State<HomesScreen> {
                 fabIcon = Icons.add;
                 fabText = 'جديد';
                 shown = false;
+                formKey.currentState.reset();
                 Navigator.pop(context);
               }
             } else {
