@@ -5,19 +5,17 @@ class Tree extends Tables {
   String type, note;
   int indexW, indexH, farmId,id;
 
-  Tree({
-    @required this.type,
-    @required this.indexH,
-    @required this.indexW,
-    @required this.note,
-    @required this.farmId,
-    this.id
-  }) {
+  Tree({@required this.type,
+      @required this.indexH,
+      @required this.indexW,
+      @required this.note,
+      @required this.farmId,
+      this.id}) {
     this.tableName = "Tree";
   }
 
   Map<String, Object> toMap() {
-    var map= {
+    var map = {
       'indexW': indexW,
       'indexH': indexH,
       'type': type,

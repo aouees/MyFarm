@@ -39,6 +39,7 @@ class _HomesScreenState extends State<HomesScreen> {
       var tempList = await myDatabase.getFarmsData();
       if (tempList != null) {
         tempList.forEach((element) {
+          Farm x = Farm.fromMap(element);
           farmsList.add(Farm.fromMap(element));
         });
       }

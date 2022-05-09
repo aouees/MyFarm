@@ -36,7 +36,6 @@ class MyDatabase {
   }
 
   Future<void> insertToMyDatabase(Tables tables) async {
-
     int id = await myDatabase.insert(tables.tableName, tables.toMap());
     print('the $id \'s ${tables.tableName} with the values ${tables.toMap()}');
     if (tables is Farm) {

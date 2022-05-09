@@ -35,7 +35,7 @@ class _farmDetailsScreenState extends State<farmDetailsScreen> {
                       itemCount: x,
                       itemBuilder: (context, col) => Row(
                               children: List.generate(y, (row) {
-                            return tree(treeList[y * row + col], context);
+                            return tree(treeList[x * row + col], context);
                           }))),
                 ),
               ),

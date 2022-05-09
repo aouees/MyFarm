@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myfarm/modal/table.dart';
 
-class Activity  extends Tables {
+class Activity extends Tables {
   String note, name, actDate;
   int farmId, id, type;
   double cost;
