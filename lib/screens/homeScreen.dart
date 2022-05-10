@@ -375,6 +375,58 @@ class _HomesScreenState extends State<HomesScreen> {
                                         SizedBox(
                                           height: 10,
                                         ),
+                                        TextFormField(
+                                          cursorColor: green,
+                                          enabled: false,
+                                          keyboardType: TextInputType.number,
+                                          textDirection: TextDirection.rtl,
+                                          decoration: InputDecoration(
+                                              hintText: 'عدد الاشجار طولا ',
+                                              hintStyle: TextStyle(
+                                                  color: green),
+                                              hintTextDirection: TextDirection
+                                                  .rtl,
+                                              focusColor: green,
+                                              enabledBorder:
+                                                  UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          width: 2.0,
+                                                          color: brown)),
+                                              focusedBorder:
+                                                  UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          width: 3.0,
+                                                          color: green))),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        TextFormField(
+                                          enabled: false,
+                                          cursorColor: green,
+                                          keyboardType: TextInputType.number,
+                                          textDirection: TextDirection.rtl,
+                                          decoration: InputDecoration(
+                                              hintText: 'عدد الاشجار عرضا ',
+                                              hintStyle: TextStyle(
+                                                  color: green),
+                                              hintTextDirection: TextDirection
+                                                  .rtl,
+                                              focusColor: green,
+                                              enabledBorder:
+                                                  UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          width: 2.0,
+                                                          color: brown)),
+                                              focusedBorder:
+                                                  UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          width: 3.0,
+                                                          color: green))),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
                                         Container(
                                           decoration: BoxDecoration(
                                               color: Colors.white,

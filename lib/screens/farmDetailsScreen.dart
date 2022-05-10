@@ -33,9 +33,9 @@ class _farmDetailsScreenState extends State<farmDetailsScreen> {
                   width: (y) * 85.0,
                   child: ListView.builder(
                       itemCount: x,
-                      itemBuilder: (context, col) => Row(
-                              children: List.generate(y, (row) {
-                            return tree(treeList[x * row + col], context);
+                      itemBuilder: (context, row) => Row(
+                              children: List.generate(y, (col) {
+                            return tree(treeList[y * row + col], context);
                           }))),
                 ),
               ),
