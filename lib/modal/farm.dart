@@ -29,4 +29,12 @@ class Farm extends Tables {
         numW: mapObj['numW'],
         id: mapObj['id']);
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (other is Farm)
+      return name == other.name && numH == other.numH && numW == other.numW;
+    else
+      return false;
+  }
 }

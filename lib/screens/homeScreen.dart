@@ -528,36 +528,40 @@ class _HomesScreenState extends State<HomesScreen> {
                   iconSize: 50.0,
                   onPressed: () async {
                     activityList = [];
-                    var list =
-                        await myDatabase.getActivitiesData(farmId: farm.id);
-                    if (list != null) {
-                      list.forEach((element) {
-                        activityList.add(Activity.fromMap(element));
-                      });
-                    }
-                    if (activityList.isNotEmpty) {
-                      Map<String, double> ix = new Map(), ex = new Map();
-                      activityList.forEach((element) {
-                        String year = element.actDate.split('-')[0];
+                    await myDatabase
+                        .getActivitiesData(farmId: farm.id)
+                        .then((value) {
+                      if (value != null) {
+                        value.forEach((element) {
+                          activityList.add(Activity.fromMap(element));
+                        });
+                      }
+                    }).then((value) {
+                      if (activityList.isNotEmpty) {
+                        Map<String, double> ix = new Map(), ex = new Map();
+                        activityList.forEach((element) {
+                          String year = element.actDate.split('-')[0];
 
-                        if (element.type == 1) {
-                          if (ix[year] == null)
-                            ix[year] = element.cost;
-                          else
-                            ix[year] += element.cost;
-                        } else {
-                          if (ex[year] == null)
-                            ex[year] = element.cost;
-                          else
-                            ex[year] += element.cost;
-                        }
-                      });
-                      dataList = [];
-                      ix.keys.forEach((element) {
-                        dataList.add(DataAct(
-                            int.parse(element), ix[element], ex[element]));
-                      });
-                    }
+                          if (element.type == 1) {
+                            if (ix[year] == null)
+                              ix[year] = element.cost;
+                            else
+                              ix[year] += element.cost;
+                          } else {
+                            if (ex[year] == null)
+                              ex[year] = element.cost;
+                            else
+                              ex[year] += element.cost;
+                          }
+                        });
+                        dataList = [];
+                        ix.keys.forEach((element) {
+                          dataList.add(DataAct(
+                              int.parse(element), ix[element], ex[element]));
+                        });
+                      }
+                    });
+
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => assessmentScreen(farm.name)));
                   },
