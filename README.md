@@ -10,14 +10,11 @@
 ![PicsArt_05-11-08 47 06](https://user-images.githubusercontent.com/56609281/191248693-65fce690-e822-4400-904c-e0654caaa88b.jpg)
 
 download for x86 cpu:
-
 https://www.mediafire.com/file/qsmuwf65fhnew6l/app-x86_64-release.apk/file
 
 download for armeabi-v7a cpu:
-
 https://www.mediafire.com/file/2kuoeind2dsenho/app-armeabi-v7a-release.apk/file
 
 download for arm64-v8a cpu:
-
 https://www.mediafire.com/file/8m4pcq5zd1u6jyg/app-arm64-v8a-release.apk/file
 
