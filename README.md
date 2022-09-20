@@ -1,8 +1,6 @@
-# myfarm
-
-A new Flutter project.
-
-SE2
+#**MY Farm**
+## Software Engineering2 course completion project
+### Flutter Project 
 
 
 ![PicsArt_05-11-08 36 17](https://user-images.githubusercontent.com/56609281/191248695-e8c5200d-fee7-4f35-b7ad-37284bb7d491.jpg)
