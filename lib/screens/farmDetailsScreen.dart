@@ -21,7 +21,7 @@ class _farmDetailsScreenState extends State<farmDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     String farmName = widget.farm.name;
-    int x = widget.farm.numW, y = widget.farm.numH;
+    int x = widget.farm.numH, y = widget.farm.numW;
     return Scaffold(
         appBar: myAppBar(context, farmName),
         body: Row(
@@ -35,7 +35,7 @@ class _farmDetailsScreenState extends State<farmDetailsScreen> {
                       itemCount: x,
                       itemBuilder: (context, row) => Row(
                               children: List.generate(y, (col) {
-                            return tree(treeList[y * row + col], context);
+                            return tree(treeList[x * col + row], context);
                           }))),
                 ),
               ),
@@ -45,7 +45,7 @@ class _farmDetailsScreenState extends State<farmDetailsScreen> {
   }
 
   Widget tree(Tree tree, context) {
-    String pos = "(${tree.indexW + 1},${tree.indexH + 1})";
+    String pos = "(${tree.indexH + 1},${tree.indexW + 1})";
     return InkWell(
       onTap: () {
         showDialog(

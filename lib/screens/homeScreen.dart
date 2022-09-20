@@ -527,7 +527,7 @@ class _HomesScreenState extends State<HomesScreen> {
                   tooltip: 'تقارير المزرعة',
                   iconSize: 50.0,
                   onPressed: () async {
-                    activityList = [];
+                    activityList .clear();
                     await myDatabase
                         .getActivitiesData(farmId: farm.id)
                         .then((value) {
@@ -536,6 +536,7 @@ class _HomesScreenState extends State<HomesScreen> {
                           activityList.add(Activity.fromMap(element));
                         });
                       }
+                      else {activityList =[];}
                     }).then((value) {
                       if (activityList.isNotEmpty) {
                         Map<String, double> ix = new Map(), ex = new Map();
@@ -560,6 +561,10 @@ class _HomesScreenState extends State<HomesScreen> {
                               int.parse(element), ix[element], ex[element]));
                         });
                       }
+                      else
+                        {
+                          dataList =[];
+                        }
                     });
 
                     Navigator.of(context).push(MaterialPageRoute(
